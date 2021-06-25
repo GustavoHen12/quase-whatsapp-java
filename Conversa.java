@@ -15,6 +15,10 @@ public class Conversa {
         this.mensagens = new ArrayList<Mensagem>();
     }
 
+    /**
+     * Se usuario 'administrador' for o administrador do grupo, insere usuario
+     * 'novoParticipante' na conversa e retorna true. Senão, retorna false
+     */
     public boolean addParticipante (Usuario novoParticipante, Usuario administrador){
         if(isAdministrador(administrador)){
             participantes.add(novoParticipante);
@@ -24,6 +28,10 @@ public class Conversa {
         return false;
     }
 
+    /**
+     * Retorna true se usuario 'administrador' é o administrador da conversa.
+     * Caso contrário, retorna false
+     */
     public boolean isAdministrador (Usuario administrador) {
         return administrador.equals(this.administrador);
     }
@@ -38,22 +46,23 @@ public class Conversa {
     }
 
     /**
-     * Função não oficial. Usada para testar se mensagem está no grupo
+     * Retorna arraylist com todas as mensagens da conversa.
      */
-    public Mensagem ultimaMensagem() {
-        Integer n_msgs = this.mensagens.size();
-        Mensagem msg = this.mensagens.get(n_msgs-1);
-        return msg;
-    }
-
     public ArrayList<Mensagem> getConversa(){
         return mensagens;
     }
 
+    /**
+     * Retorna string com nome do grupo
+     */
     public String getNomeGrupo(){
         return this.nomeGrupo;
     }
 
+    /**
+     * Exclui última mensagem mandada pelo usuario 'usuario' no grupo atual
+     * Se não houver nenhuma mensagem desse usuario, não faz nada
+     */
     public void excluirMensagemUsuario(Usuario usuario){
         ArrayList<Mensagem> msgs = this.mensagens;
         for (int i = msgs.size() - 1; i >= 0; i--){

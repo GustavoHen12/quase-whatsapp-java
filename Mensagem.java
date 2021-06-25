@@ -11,6 +11,9 @@ public class Mensagem {
         this.destino = destino;
     }
 
+    /**
+     * Retorna string formatada com texto e arquivo da mensagem.
+     */
     public String getTexto() {
         String msg = this.mensagem;
         if (anexo != null) {
