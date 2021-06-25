@@ -53,4 +53,14 @@ public class Conversa {
     public String getNomeGrupo(){
         return this.nomeGrupo;
     }
+
+    public void excluirMensagemUsuario(Usuario usuario){
+        ArrayList<Mensagem> msgs = this.mensagens;
+        for (int i = msgs.size() - 1; i >= 0; i--){
+            if (msgs.get(i).origem.equals(usuario)){
+                msgs.remove(i);
+                return;
+            }
+        }
+    }
 }

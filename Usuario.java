@@ -116,4 +116,17 @@ public class Usuario {
         }
         System.out.println();
     }
+
+    /**
+     * Exclui ultima mensagem do usuário no grupo "nomeGrupo"
+     * Retorna false se grupo não existe e true caso contrário
+     */
+    public boolean excluirMensagem(String nomeGrupo){
+        Conversa grupo = this.buscaGrupo(nomeGrupo);
+        if (grupo != null) {
+            grupo.excluirMensagemUsuario(this);
+            return true;
+        }
+        return false;
+    }
 }

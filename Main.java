@@ -46,10 +46,16 @@ class Main {
         p3.mandarMensagemGrupo("g2", "Como ceis tao ?", null);
         // p3 envia mensagem para g3;
         p3.mandarMensagemGrupo("g3", "Bom dia rapaziada", new Arquivo("Imagem", "chico_bento_mandando_bom_dia.jpg"));
-        
+
         p1.getTela();
         p2.getTela();
         p3.getTela();
         p4.getTela();
+
+        // p3 excluir sua ultima mensagem do grupo g3
+        p1.excluirMensagem("g1");
+
+        p2.getTela();
+
     }
 }
