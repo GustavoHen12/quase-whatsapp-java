@@ -1,6 +1,5 @@
 class Main {
-    public static void main(String[] args) {        
-        System.out.println("Bem vindo ao (quase) whatsapp");
+    public static void main(String[] args) {
 
         Usuario p1 = new Usuario("p1", 99239909);
         Usuario p2 = new Usuario("p2", 99239929);
@@ -24,15 +23,8 @@ class Main {
         //p3 inclui p4 no grupo g3;
         p3.addParticipanteGrupo("g3", p4);
 
-        //Teste usuario nao admin tenta adicionar participante
-        //talvez de pra adicionar uma mensagem de erro, mas não é necessário
+        //Teste: usuario nao admin tenta adicionar participante
         p2.addParticipanteGrupo("g2", p4);
-
-        System.out.println("Grupos");
-        System.out.println("p1 => " + p1.getNomesGrupos());
-        System.out.println("p2 => " + p2.getNomesGrupos());
-        System.out.println("p3 => " + p3.getNomesGrupos());
-        System.out.println("p4 => " + p4.getNomesGrupos());
 
         // p2 envia mensagem para g1;
         p2.mandarMensagemGrupo("g1", "Fala, grupão!", null);
