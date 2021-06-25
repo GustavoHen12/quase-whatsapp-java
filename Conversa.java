@@ -45,4 +45,12 @@ public class Conversa {
         Mensagem msg = this.mensagens.get(n_msgs-1);
         return msg;
     }
+
+    public ArrayList<Mensagem> getConversa(){
+        return mensagens;
+    }
+
+    public String getNomeGrupo(){
+        return this.nomeGrupo;
+    }
 }

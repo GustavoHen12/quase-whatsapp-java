@@ -34,9 +34,22 @@ class Main {
         System.out.println("p3 => " + p3.getNomesGrupos());
         System.out.println("p4 => " + p4.getNomesGrupos());
 
-        if (p2.mandarMensagemGrupo("g1", "Fala, grupão!")) {
-            p2.imprimirMensagemGrupo("g1");
-        }
-
+        // p2 envia mensagem para g1;
+        p2.mandarMensagemGrupo("g1", "Fala, grupão!");
+        // p1 envia mensagem para g1;
+        p1.mandarMensagemGrupo("g1", "Bom dia");
+        // p2 envia mensagem para g2;
+        p2.mandarMensagemGrupo("g2", "Bom dia familia");
+        // p3 envia mensagem para g3;
+        p3.mandarMensagemGrupo("g3", "Ta chovendo ai");
+        // p3 envia mensagem para g2;
+        p3.mandarMensagemGrupo("g2", "Como ceis tao ?");
+        // p3 envia mensagem para g3;
+        p3.mandarMensagemGrupo("g3", "Bom dia rapaziada");
+        
+        p1.getTela();
+        p2.getTela();
+        p3.getTela();
+        p4.getTela();
     }
 }
