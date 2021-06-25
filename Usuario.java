@@ -81,4 +81,26 @@ public class Usuario {
         }
         return nomesGruposList;
     }
+
+    /**
+     * Usuário manda mensagem para o grupo.
+     * @return true se mensagem foi enviada com sucesso, false caso contrário.
+     */
+    public boolean mandarMensagemGrupo (String nomeGrupo, String mensagem) {
+        Conversa grupo = this.buscaGrupo(nomeGrupo);
+        if ( grupo != null ) {
+            return grupo.addMensagem(mensagem, this);
+        }
+        return false;
+    }
+
+    /**
+     * Função não oficial. Usada para testar se mensagem está no grupo
+     */
+    public void imprimirMensagemGrupo (String nomeGrupo) {
+        Conversa grupo = this.buscaGrupo(nomeGrupo);
+        if (grupo != null) {
+            System.out.println(grupo.ultimaMensagem().getTexto());
+        }
+    }
 }
