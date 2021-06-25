@@ -97,7 +97,27 @@ public class Usuario {
     /**
      * Função não oficial. Usada para testar se mensagem está no grupo
      */
-    public boolean imprimirMensagemGrupo (String nomeGrupo) {
+    public void getTela(){
+        System.out.println("-------------------------");
+        System.out.println("Usuário: " + this.nome);
+        System.out.println("Telefone: " + this.numeroTelefone);
+        System.out.println("-------------------------");
+
+        for(Conversa conversa : this.conversas){
+            System.out.println("[" + conversa.getNomeGrupo() + "]");
+            ArrayList<Mensagem> mensagens;
+            mensagens = conversa.getConversa();
+            for (Mensagem m : mensagens){
+                if(m.origem.equals(this))
+                    System.out.println("\t|- Voce: " + m.getTexto());
+                else
+                    System.out.println("\t|- " + m.origem.nome + ": " + m.getTexto());
+            }
+        }
+        System.out.println();
+    }
+    
+    /* public boolean imprimirMensagensGrupo (String nomeGrupo) {
         Conversa grupo = this.buscaGrupo(nomeGrupo);      
         if (grupo != null){
             ArrayList<Mensagem> mensagens;
@@ -111,5 +131,5 @@ public class Usuario {
             return true;
         }
         return false;
-    }
+    } */
 }

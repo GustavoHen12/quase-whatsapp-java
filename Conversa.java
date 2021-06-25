@@ -49,4 +49,8 @@ public class Conversa {
     public ArrayList<Mensagem> getConversa(){
         return mensagens;
     }
+
+    public String getNomeGrupo(){
+        return this.nomeGrupo;
+    }
 }
