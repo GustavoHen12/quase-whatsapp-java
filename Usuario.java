@@ -86,10 +86,10 @@ public class Usuario {
      * Usuário manda mensagem para o grupo.
      * @return true se mensagem foi enviada com sucesso, false caso contrário.
      */
-    public boolean mandarMensagemGrupo (String nomeGrupo, String mensagem) {
+    public boolean mandarMensagemGrupo (String nomeGrupo, String mensagem, Arquivo arquivo) {
         Conversa grupo = this.buscaGrupo(nomeGrupo);
         if ( grupo != null ) {
-            return grupo.addMensagem(mensagem, this);
+            return grupo.addMensagem(mensagem, this, arquivo);
         }
         return false;
     }

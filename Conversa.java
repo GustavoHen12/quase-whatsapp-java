@@ -31,8 +31,8 @@ public class Conversa {
     /**
      * Adiciona mensagem de texto na conversa
      */
-    public boolean addMensagem (String mensagem, Usuario autor) {
-        Mensagem new_mensagem = new Mensagem(mensagem, null, autor, this);
+    public boolean addMensagem (String mensagem, Usuario autor, Arquivo arquivo) {
+        Mensagem new_mensagem = new Mensagem(mensagem, arquivo, autor, this);
         this.mensagens.add(new_mensagem);
         return true;
     }

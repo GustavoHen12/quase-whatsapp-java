@@ -12,6 +12,11 @@ public class Mensagem {
     }
 
     public String getTexto() {
-        return this.mensagem;
+        String msg = this.mensagem;
+        if (anexo != null) {
+            msg = msg + "\n\t  Anexo: " + this.anexo.getNome();
+            msg = msg + "\n\t  " + this.anexo.getTipo() + "\n";
+        }
+        return msg;
     }
 }
