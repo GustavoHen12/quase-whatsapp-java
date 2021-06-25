@@ -31,8 +31,8 @@ public class Conversa {
     /**
      * Adiciona mensagem de texto na conversa
      */
-    public boolean addMensagem (String mensagem, Usuario autor) {
-        Mensagem new_mensagem = new Mensagem(mensagem, null, autor, this);
+    public boolean addMensagem (String mensagem, Usuario autor, Arquivo arquivo) {
+        Mensagem new_mensagem = new Mensagem(mensagem, arquivo, autor, this);
         this.mensagens.add(new_mensagem);
         return true;
     }
@@ -52,5 +52,15 @@ public class Conversa {
 
     public String getNomeGrupo(){
         return this.nomeGrupo;
+    }
+
+    public void excluirMensagemUsuario(Usuario usuario){
+        ArrayList<Mensagem> msgs = this.mensagens;
+        for (int i = msgs.size() - 1; i >= 0; i--){
+            if (msgs.get(i).origem.equals(usuario)){
+                msgs.remove(i);
+                return;
+            }
+        }
     }
 }

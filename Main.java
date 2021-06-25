@@ -35,21 +35,27 @@ class Main {
         System.out.println("p4 => " + p4.getNomesGrupos());
 
         // p2 envia mensagem para g1;
-        p2.mandarMensagemGrupo("g1", "Fala, grupão!");
+        p2.mandarMensagemGrupo("g1", "Fala, grupão!", null);
         // p1 envia mensagem para g1;
-        p1.mandarMensagemGrupo("g1", "Bom dia");
+        p1.mandarMensagemGrupo("g1", "Bom dia", new Arquivo("Imagem", "flor_com_mensagem_motivadora.jpg"));
         // p2 envia mensagem para g2;
-        p2.mandarMensagemGrupo("g2", "Bom dia familia");
+        p2.mandarMensagemGrupo("g2", "Bom dia familia", new Arquivo("GIF", "ursinho_carinhoso.gif"));
         // p3 envia mensagem para g3;
-        p3.mandarMensagemGrupo("g3", "Ta chovendo ai");
+        p3.mandarMensagemGrupo("g3", "Ta chovendo ai", null);
         // p3 envia mensagem para g2;
-        p3.mandarMensagemGrupo("g2", "Como ceis tao ?");
+        p3.mandarMensagemGrupo("g2", "Como ceis tao ?", null);
         // p3 envia mensagem para g3;
-        p3.mandarMensagemGrupo("g3", "Bom dia rapaziada");
-        
+        p3.mandarMensagemGrupo("g3", "Bom dia rapaziada", new Arquivo("Imagem", "chico_bento_mandando_bom_dia.jpg"));
+
         p1.getTela();
         p2.getTela();
         p3.getTela();
         p4.getTela();
+
+        // p2 exclui sua ultima mensagem do grupo g1
+        p2.excluirMensagem("g1");
+
+        p2.getTela();
+
     }
 }
