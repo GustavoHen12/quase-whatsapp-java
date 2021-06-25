@@ -95,7 +95,7 @@ public class Usuario {
     }
 
     /**
-     * Função oficial.
+     * Retorna tela com informações sobre o usuário e todas as suas conversas.
      */
     public void getTela(){
         System.out.println("-------------------------");
