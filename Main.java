@@ -52,8 +52,8 @@ class Main {
         p3.getTela();
         p4.getTela();
 
-        // p3 excluir sua ultima mensagem do grupo g3
-        p1.excluirMensagem("g1");
+        // p2 exclui sua ultima mensagem do grupo g1
+        p2.excluirMensagem("g1");
 
         p2.getTela();
 
