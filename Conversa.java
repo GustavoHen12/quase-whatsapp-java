@@ -12,6 +12,7 @@ public class Conversa {
         this.nomeGrupo = nomeGrupo;
 
         this.participantes = new ArrayList<Usuario>();
+        this.mensagens = new ArrayList<Mensagem>();
     }
 
     public boolean addParticipante (Usuario novoParticipante, Usuario administrador){
@@ -25,5 +26,23 @@ public class Conversa {
 
     public boolean isAdministrador (Usuario administrador) {
         return administrador.equals(this.administrador);
+    }
+
+    /**
+     * Adiciona mensagem de texto na conversa
+     */
+    public boolean addMensagem (String mensagem, Usuario autor) {
+        Mensagem new_mensagem = new Mensagem(mensagem, null, autor, this);
+        this.mensagens.add(new_mensagem);
+        return true;
+    }
+
+    /**
+     * Função não oficial. Usada para testar se mensagem está no grupo
+     */
+    public Mensagem ultimaMensagem() {
+        Integer n_msgs = this.mensagens.size();
+        Mensagem msg = this.mensagens.get(n_msgs-1);
+        return msg;
     }
 }

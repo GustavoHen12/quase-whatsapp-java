@@ -10,4 +10,8 @@ public class Mensagem {
         this.origem = origem;
         this.destino = destino;
     }
+
+    public String getTexto() {
+        return this.mensagem;
+    }
 }

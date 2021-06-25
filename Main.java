@@ -33,5 +33,10 @@ class Main {
         System.out.println("p2 => " + p2.getNomesGrupos());
         System.out.println("p3 => " + p3.getNomesGrupos());
         System.out.println("p4 => " + p4.getNomesGrupos());
+
+        if (p2.mandarMensagemGrupo("g1", "Fala, grupão!")) {
+            p2.imprimirMensagemGrupo("g1");
+        }
+
     }
 }
