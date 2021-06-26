@@ -83,7 +83,7 @@ public class Usuario {
     }
 
     /**
-     * Usuário manda mensagem para o grupo.
+     * Usuário manda para o grupo 'nomeGrupo' a mensagem 'mensagem', com o anexo 'arquivo'.
      * @return true se mensagem foi enviada com sucesso, false caso contrário.
      */
     public boolean mandarMensagemGrupo (String nomeGrupo, String mensagem, Arquivo arquivo) {
@@ -95,7 +95,7 @@ public class Usuario {
     }
 
     /**
-     * Função oficial.
+     * Retorna tela com informações sobre o usuário e todas as suas conversas.
      */
     public void getTela(){
         System.out.println("-------------------------");

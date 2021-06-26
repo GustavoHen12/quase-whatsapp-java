@@ -7,9 +7,16 @@ public class Arquivo {
         this.nomeArquivo = nomeArquivo;
     }
 
+    /**
+     * Retorna tipo do arquivo
+     */
     public String getTipo() {
         return tipoArquivo;
     }
+
+    /**
+     * Retorna nome do arquivo
+     */
     public String getNome() {
         return nomeArquivo;
     }
