@@ -7,9 +7,11 @@ public class Usuario {
     public String status;
     private ArrayList<Conversa> conversas;
 
-    public Usuario (String nome, Integer numeroTelefone){
+    public Usuario (String nome, Integer numeroTelefone, String status, Arquivo foto){
         this.nome = nome;
         this.numeroTelefone = numeroTelefone;
+        this.status = status;
+        this.foto = foto;
         this.conversas = new ArrayList<Conversa>();
     }
 
@@ -101,6 +103,8 @@ public class Usuario {
         System.out.println("-------------------------");
         System.out.println("Usuário: " + this.nome);
         System.out.println("Telefone: " + this.numeroTelefone);
+        System.out.println("Status: " + this.status);
+        System.out.println("Foto: " + this.foto.getNome());
         System.out.println("-------------------------");
 
         for(Conversa conversa : this.conversas){

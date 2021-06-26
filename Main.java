@@ -1,10 +1,10 @@
 class Main {
     public static void main(String[] args) {
 
-        Usuario p1 = new Usuario("p1", 99239909);
-        Usuario p2 = new Usuario("p2", 99239929);
-        Usuario p3 = new Usuario("p3", 99239939);
-        Usuario p4 = new Usuario("p4", 99239949);
+        Usuario p1 = new Usuario("p1", 99239909, "At work", new Arquivo("foto", "perfil1.jpg"));
+        Usuario p2 = new Usuario("p2", 99239929, "Hey, there! I am using Whatsapp!", new Arquivo("foto", "perfil2.jpg"));
+        Usuario p3 = new Usuario("p3", 99239939, ":thumbsup:", new Arquivo("foto", "perfil3.jpg"));
+        Usuario p4 = new Usuario("p4", 99239949, ":smileyface:", new Arquivo("foto", "perfil4.jpg"));
 
         //p1 cria os grupos g1 e g2;
         p1.criaGrupo("g1");
@@ -47,6 +47,7 @@ class Main {
         // p2 exclui sua ultima mensagem do grupo g1
         p2.excluirMensagem("g1");
 
+        System.out.println("(p2 exclui sua ultima mensagem no grupo g1)");
         p2.getTela();
 
     }
