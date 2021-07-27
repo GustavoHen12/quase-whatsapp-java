@@ -1,19 +1,11 @@
+package trabalho.grupo;
 import java.util.ArrayList;
 
-interface IConversa {
+import trabalho.IMensagem;
+import trabalho.usuario.Usuario;
+public class Grupo implements IConversa {
 
-    public boolean adicionarParticipante();
-
-    public boolean enviarMensagem();
-
-    public boolean cancelarUltimaMensagem();
-
-    public ArrayList getMensagens();
-}
-
-class Grupo implements IConversa {
-
-    public ArrayList <Mensagem> mensagens;
+    public ArrayList <IMensagem> mensagens;
 
     private ArrayList<Usuario> participantes;
     private Usuario administrador;
@@ -27,8 +19,8 @@ class Grupo implements IConversa {
 
         this.participantes = new ArrayList<Usuario>();
         participantes.add(administrador);
-
-        this.mensagens = new ArrayList<Mensagem>();
+        
+        this.mensagens = new ArrayList<IMensagem>();
     }
 
     public static void criaGrupo(Usuario usuario, String nomeGrupo){
@@ -53,7 +45,7 @@ class Grupo implements IConversa {
         // filtra msg por usuario
         // add usuario lista visualizados
         // idUsuario
-        return new ArrayList<Mensagem>();
+        return new ArrayList<IMensagem>();
     }
 
     //

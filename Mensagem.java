@@ -1,11 +1,18 @@
-public interface IMensagem {
+interface IMensagem {
     public String getMensagem();
 }
-
-public class MensagemTexto implements IMensagem {
+public class Mensagem implements IMensagem {
     static Integer TIPO_TEXTO = 1;
+    public String getMensagem(){
+        return "vazio";
+    }
 }
+// public interface IMensagem {
+//     public String getMensagem();
+// }
 
-public class MensagemArquivo implements IMensagem {
-    static Integer TIPO_ARQUIVO = 2;
-}
+
+
+// public class MensagemArquivo implements IMensagem {
+//     static Integer TIPO_ARQUIVO = 2;
+// }

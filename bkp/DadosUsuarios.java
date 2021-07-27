@@ -7,7 +7,7 @@ class DadosUsuarios{
     private static DadosUsuarios instance = null;
 
     private DadosUsuarios(){
-        this.todosUsuarios = new ArrayList<Usuario>();
+        this.todosUsuarios = new ArrayList();
         this.ultimoId = 0;
     }
 

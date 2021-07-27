@@ -1,12 +1,18 @@
-class Whatsapp {
+package trabalho;
+
+import trabalho.grupo.command.CriarGrupoCommand;
+import trabalho.usuario.CriadorUsuario;
+import trabalho.usuario.Usuario;
+
+public class Whatsapp {
        Usuario usuario;
-       CommandCriarGrupo criarGrupoCmd;
+       CriarGrupoCommand criarGrupoCmd;
 
        public void cadastrar(String nome, String telefone) {
               CriadorUsuario criadorUsuario = new CriadorUsuario();
               usuario = criadorUsuario.criaUsuario(nome, telefone);
 
-              criarGrupoCmd = new CommandCriarGrupo(usuario, null);
+              criarGrupoCmd = new CriarGrupoCommand(usuario, null);
        }
 
        public void BtnNovoGrupo(String nomeGrupo){

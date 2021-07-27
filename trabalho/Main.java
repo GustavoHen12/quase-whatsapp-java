@@ -1,3 +1,5 @@
+package trabalho;
+
 public class Main {
     public static void main(String[] args) {
         Whatsapp whatsP1 = new Whatsapp();

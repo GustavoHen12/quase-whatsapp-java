@@ -1,12 +1,12 @@
-class Whatsapp {
+public class Whatsapp {
        Usuario usuario;
-       CommandCriarGrupo criarGrupoCmd;
+       CriarGrupoCommand criarGrupoCmd;
 
        public void cadastrar(String nome, String telefone) {
               CriadorUsuario criadorUsuario = new CriadorUsuario();
               usuario = criadorUsuario.criaUsuario(nome, telefone);
 
-              criarGrupoCmd = new CommandCriarGrupo(usuario, null);
+              criarGrupoCmd = new CriarGrupoCommand(usuario, null);
        }
 
        public void BtnNovoGrupo(String nomeGrupo){
@@ -14,10 +14,10 @@ class Whatsapp {
               criarGrupoCmd.executar();
        }
 
-       // public void BtnAdicionarParticipante(String nomeParticipante){
-       //        criarGrupoCmd.nomeGrupo = nomeGrupo;
-       //        criarGrupoCmd.executar();
-       // }
+       public void BtnAdicionarParticipante(String nomeParticipante){
+              criarGrupoCmd.nomeGrupo = nomeGrupo;
+              criarGrupoCmd.executar();
+       }
 
 
         /**

@@ -1,21 +1,21 @@
+package trabalho.usuario;
 import java.util.ArrayList;
-interface IUsuario {
-    public void adicionadoConversa(Grupo conversa);
-    public String getListaGrupos();
-}
 
-class Usuario implements IUsuario {
+import trabalho.Arquivo;
+import trabalho.grupo.IConversa;
+
+public class Usuario implements IUsuario {
     public final Integer idUsuario;
     public final String nome;
     public final String numeroTelefone;
     public Arquivo foto;
     public String status;
-    private ArrayList<Grupo> conversas;
+    private ArrayList<IConversa> conversas;
 
     public Usuario (String nome, String numeroTelefone){
         this.nome = nome;
         this.numeroTelefone = numeroTelefone;
-        this.conversas = new ArrayList<Grupo>();
+        this.conversas = new ArrayList<IConversa>();
         this.idUsuario = DadosUsuarios.getProxId();
     }
 
@@ -24,7 +24,7 @@ class Usuario implements IUsuario {
      * do usuario
      * @param conversa
      */
-    public void adicionadoConversa (Grupo conversa) {
+    public void adicionadoConversa (IConversa conversa) {
         this.conversas.add(conversa);
     }
 
