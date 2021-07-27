@@ -1,7 +1,49 @@
 class Whatsapp {
        Usuario usuario;
-       CommandCriarGrupo criarGrupoCmd;
+       Grupo grupoAtual; //Se null -> esta no menu
 
+       public NavMenu(){
+              grupoAtual = null;
+              //pega usuario e printa todos os grupos dele;
+              //usuario.grupos();
+       }
+
+       public NavGrupo(Grupo grupo){
+              grupoAtual = grupo;
+              usuario.grupo.getMensagens();
+       }
+
+
+       private CommandEnviarMensagem enviarMensagemCmd;
+       public void BtnEnviarMensagem(String mensagem){
+              if(grupoAtual != null){       
+                     enviarMensagemCmd.mensagem = mensagem;
+                     enviarMensagemCmd.grupo = grupoAtual;
+                     enviarMensagemCmd.executar();
+              }
+       }
+
+
+
+       private CommandEnviarArquivo enviarArquivoCmd;
+       public void BtnEnviarArquivo(TipoArquivo arquivo){
+              if(grupoAtual != null){
+                     enviarArquivoCmd.arquivo = arquivo;
+                     enviarArquivoCmd.grupo = grupoAtual;
+                     enviarArquivoCmd.executar();
+              }
+       }
+
+
+       private CommandCancelarEnvioMensagem cancelarEnvioCmd;
+       public void BtnCancelarEnvioMensagem(){
+              if(grupoAtual != null){
+                     cancelarEnvioCmd.executar();
+              }
+       }
+
+
+       CommandCriarGrupo criarGrupoCmd;
        public void cadastrar(String nome, String telefone) {
               CriadorUsuario criadorUsuario = new CriadorUsuario();
               usuario = criadorUsuario.criaUsuario(nome, telefone);
@@ -14,36 +56,14 @@ class Whatsapp {
               criarGrupoCmd.executar();
        }
 
-       // public void BtnAdicionarParticipante(String nomeParticipante){
-       //        criarGrupoCmd.nomeGrupo = nomeGrupo;
-       //        criarGrupoCmd.executar();
-       // }
 
 
-        /**
-         *  - Usuario usuario;
-         *  - String estadoAtual;
-         *  - Grupo grupoAtual;
-         * 
-         *  - private EnviarMensagemCommand enviarMensagemCmd;
-         *  - private CancelarEnvioMensagemCommand cancelarEnvioCmd;
-         * 
-         *  + public NavMenu();
-                usuario.grupos();
-
-         *  + public NavGrupo("Nome grupo");
-                usuario.grupo.getMensagens();
-
-         *  + private constroiMenu();
-         *  + private constroiConversaGrupo();
-         *  
-         *  + public BtnNovoGrupo("Nome grupo");
-                grupo comand
-
-         *  + public PBtnAdicionarParticipante("Nome Usuario");
-         *  + public PBtnEnviarMensagem("mensagem");
-                EnviarMensagemCommand.execute(mensagem, grupoAtual);
-         *  + public PBtnEnviarMensagem(Arquivo);
-         *  + public PBtnCancelarEnvioMensagem(); 
-         */
+       CommandAdicionarParticipante adicionarParticipanteCmd;
+       public void BtnAdicionarParticipante(String nomeParticipante){
+              if(grupoAtual != null){
+                     adicionarParticipanteCmd.grupo = grupoAtual;
+                     adicionarParticipanteCmd.nomeParticipante = nomeParticipante;
+                     adicionarParticipanteCmd.executar();
+              }
+       }
 }
