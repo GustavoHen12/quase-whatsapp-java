@@ -10,7 +10,7 @@ class Usuario implements IUsuario {
     public final String numeroTelefone;
     public Arquivo foto;
     public String status;
-    private ArrayList<Grupo> conversas;
+    public ArrayList<Grupo> conversas; // mudar
 
     public Usuario (String nome, String numeroTelefone){
         this.nome = nome;

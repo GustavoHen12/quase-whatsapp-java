@@ -6,7 +6,7 @@ public class CommandCancelarEnvioMensagem extends Command {
 
     @Override
     boolean executar() {
-        Grupo.cancelarUltimaMensagem(this.usuario);
+    //    Grupo.cancelarUltimaMensagem(this.usuario);
         return true;
     }
 }

@@ -4,7 +4,7 @@ interface IConversa {
 
     public boolean adicionarParticipante();
 
-    public boolean enviarMensagem();
+    public boolean enviarMensagem(Mensagem mensagem);
 
     public boolean cancelarUltimaMensagem();
 
@@ -40,7 +40,8 @@ class Grupo implements IConversa {
         return true;
     }
     
-    public boolean enviarMensagem(/*Integer idUsuario, String msgTexto, String arquivo */){
+    public boolean enviarMensagem(Mensagem mensagem/*Integer idUsuario, String msgTexto, String arquivo */){
+        this.mensagens.add(mensagem);
         return true;
     }
 

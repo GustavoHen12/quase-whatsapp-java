@@ -1,16 +1,35 @@
-public class CommandEnviarArquivo extends Command {
-    Grupo grupo;
-    TipoArquivo arquivo
+//public class CommandEnviarArquivo extends Command {
+//    Grupo grupo;
+//    TipoArquivo arquivo
+//
+//    CommandEnviarMensagem (Usuario usuario, TipoArquivo arquivo){
+//        super(usuario);
+//        this.grupo = grupo;
+//        this.arquivo = arquivo;
+//    }
+//
+//    @Override
+//    boolean executar() {
+//        Grupo.enviarMensagem(this.usuario, this.arquivo);
+//        return true;
+//    }
+//}
 
-    CommandEnviarMensagem (Usuario usuario, TipoArquivo arquivo){
+public class CommandEnviarArquivo extends Command {
+    Arquivo arquivo;
+    Grupo grupo;
+
+    CommandEnviarArquivo (Usuario usuario){
         super(usuario);
-        this.grupo = grupo;
-        this.arquivo = arquivo;
     }
 
     @Override
     boolean executar() {
-        Grupo.enviarMensagem(this.usuario, this.arquivo);
+        ICriadorMensagem criadorArquivo = new CriadorMensagemArquivo();
+        Mensagem msg = criadorArquivo.createMensagem(this.usuario);
+        ((MensagemArquivo)msg).setArquivo(this.arquivo);
+
+        this.grupo.enviarMensagem(msg);
         return true;
     }
 }

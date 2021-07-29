@@ -15,6 +15,11 @@ public class Main {
         whatsP1.BtnNovoGrupo("NovoGrupo");
 
         System.out.println(whatsP1);
+
+        whatsP1.NavGrupo(whatsP1.usuario.conversas.get(0));
+        whatsP1.BtnEnviarMensagem("Hello, World!");
+        //whatsP1.BtnEnviarArquivo(new Arquivo("GIF", "Bom_dia.gif"));
+        System.out.println(whatsP1.usuario.conversas.get(0).mensagens.get(0).getMensagem());
         // whats.PBtnNovoGrupo("Nome Grupo");
         // whats.NavGrupo("g1");
         // whats.PBtnEnviarMensagem("mensagem");
