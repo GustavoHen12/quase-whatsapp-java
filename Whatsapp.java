@@ -4,13 +4,54 @@ class Whatsapp {
 
        public void NavMenu(){
               grupoAtual = null;
-              //pega usuario e printa todos os grupos dele;
-              //usuario.grupos();
+
+              System.out.println("--------------------------");
+              System.out.println("|          MENU          |");
+              System.out.println("--------------------------");
+              System.out.println("| Usuário: " + usuario.nome);
+              System.out.println("| Telefone: " + usuario.numeroTelefone);
+              System.out.println("--------------------------");
+              System.out.println("| GRUPOS                 |");
+
+              ArrayList<Grupo> grupos;
+              grupos = usuario.getListaGrupos();
+              for (Grupo g : grupos){
+                     System.out.println("\t|- " + g.getNomeGrupo());
+              }
+              System.out.println();
+
        }
 
-       public void NavGrupo(Grupo grupo){
-              grupoAtual = grupo;
-       //       usuario.grupo.getMensagens();
+       public void NavGrupo(String nomeGrupo){
+              grupoAtual = null;
+              if(usuario.conversas != null && usuario.conversas.size() > 0){
+                     for(int i = 0; i < usuario.conversas.size(); i++){
+                            if(usuario.conversas.get(i).nomeGrupo.equals(nomeGrupo)){
+                                   grupoAtual = usuario.conversas.get(i);
+                            }
+                     }
+              }
+              if(grupoAtual == null){
+                     System.out.println("GRUPO NAO ENCONTRADO, RETORNANDO PARA O MENU ...");
+                     NavMenu();
+              }
+
+              System.out.println("--------------------------");
+              System.out.println("Usuário: " + usuario.nome);
+              System.out.println("Telefone: " + usuario.numeroTelefone);
+              System.out.println("--------------------------");
+
+              System.out.println("[" + grupoAtual.getNomeGrupo() + "]");
+              ArrayList<Mensagem> mensagens;
+              mensagens = grupoAtual.getConversa();
+              for (Mensagem m : mensagens){
+                     if(m.origem.equals(this))
+                            System.out.println("\t|- Voce: " + m.getTexto());
+                     else
+                            System.out.println("\t|- " + m.origem.nome + ": " + m.getTexto());
+              }
+              System.out.println();
+
        }
 
 
