@@ -84,7 +84,7 @@ class Grupo implements IConversa {
     public void notificaParticipantes(Usuario usuario) {
         for(Usuario participante: this.participantes){
             if(participante != usuario)
-                participante.notifica("Mensagens do grupo" + this.nomeGrupo + "vizualizadas por " + usuario.nome + "\n");
+                participante.notifica(this.nomeGrupo + ": " + usuario.nome + " vizualizou mensagem.|");
         }
     }
 }
