@@ -41,14 +41,14 @@ class Whatsapp {
               System.out.println("| Usuário: " + usuario.nome);
               System.out.println("| Telefone: " + usuario.numeroTelefone);
               System.out.println("--------------------------");
-              System.out.println("[" + grupoAtual.getNomeGrupo() + "]");
+              System.out.println("[" + grupoAtual.nomeGrupo + "]");
               ArrayList<Mensagem> mensagens;
               mensagens = grupoAtual.getMensagens();
               for (Mensagem m : mensagens){
                      if(m.emissor.equals(this))
-                            System.out.println("\t|- Voce: " + m.getTexto());
+                            System.out.println("\t|- Voce: " + m.getMensagem());
                      else
-                            System.out.println("\t|- " + m.emissor.nome + ": " + m.getTexto());
+                            System.out.println("\t|- " + m.emissor.nome + ": " + m.getMensagem());
               }
               System.out.println();
 
@@ -67,7 +67,7 @@ class Whatsapp {
 
 
        private CommandEnviarArquivo enviarArquivoCmd = new CommandEnviarArquivo(this.usuario);
-       public void BtnEnviarArquivo(TipoArquivo arquivo){
+       public void BtnEnviarArquivo(Arquivo arquivo){
               if(grupoAtual != null){
                      enviarArquivoCmd.arquivo = arquivo;
                      enviarArquivoCmd.grupo = grupoAtual;
@@ -76,12 +76,12 @@ class Whatsapp {
        }
 
 
-       private CommandCancelarEnvioMensagem cancelarEnvioCmd = new CommandCancelarEnvioMensagem(this.usuario);
-       public void BtnCancelarEnvioMensagem(){
-              if(grupoAtual != null){
-                     cancelarEnvioCmd.executar();
-              }
-       }
+//       private CommandCancelarEnvioMensagem cancelarEnvioCmd = new CommandCancelarEnvioMensagem(this.usuario);
+//       public void BtnCancelarEnvioMensagem(){
+//              if(grupoAtual != null){
+//                     cancelarEnvioCmd.executar();
+//              }
+//       }
 
 
        public void BtnNovoGrupo(String nomeGrupo){
