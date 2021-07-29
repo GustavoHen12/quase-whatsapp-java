@@ -1,14 +1,16 @@
 public class CommandCriarGrupo extends Command {
     String nomeGrupo;
 
-    CommandCriarGrupo (Usuario usuario, String nomeGrupo){
+    CommandCriarGrupo (Usuario usuario){
         super(usuario);
-        this.nomeGrupo = nomeGrupo;
+        this.nomeGrupo = null;
     }
 
     @Override
     boolean executar() {
-        Grupo.criaGrupo(this.usuario, this.nomeGrupo);
+        if(this.nomeGrupo != null){
+            Grupo.criaGrupo(this.usuario, this.nomeGrupo);
+        }
         return true;
     }
 }

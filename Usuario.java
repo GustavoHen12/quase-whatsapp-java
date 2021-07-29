@@ -37,9 +37,20 @@ class Usuario implements IUsuario {
         String nomesGruposList = "";
         if(this.conversas != null && this.conversas.size() > 0){
             for(int i = 0; i < this.conversas.size(); i++){
-                //nomesGruposList += conversas.get(i).nomeGrupo + " ";
+                nomesGruposList += conversas.get(i).nomeGrupo + " ";
             }
         }
         return nomesGruposList;
+    }
+
+    public Grupo getGrupoPorNomeGrupo (String nomeGrupo) {
+        if(this.conversas != null && this.conversas.size() > 0){
+            for(Grupo grupo : this.conversas){
+                if(grupo.nomeGrupo.equals(nomeGrupo)){
+                    return grupo;
+                }
+            }
+        }
+        return null;
     }
 }

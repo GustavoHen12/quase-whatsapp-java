@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 interface IConversa {
 
-    public boolean adicionarParticipante();
+    public boolean adicionarParticipante(Usuario administrador, String nomeNovoParticipante);
 
     public boolean enviarMensagem(Mensagem mensagem);
 
@@ -36,8 +36,21 @@ class Grupo implements IConversa {
         criadorGrupo.createConversa(nomeGrupo, usuario);
     }
     
-    public boolean adicionarParticipante(/*Integer IdUsuarioOrigem, Integer IdNovoParticipante*/){
-        return true;
+    public boolean adicionarParticipante(Usuario administrador, String nomeNovoParticipante){
+        if(isAdministrador(administrador)){
+            DadosUsuarios dadosUsuarios = DadosUsuarios.getInstance();
+            Usuario novoParticipante = dadosUsuarios.getUsuarioPorNome(nomeNovoParticipante);
+            if(novoParticipante != null){
+                participantes.add(novoParticipante);
+                novoParticipante.adicionadoConversa(this);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isAdministrador (Usuario administrador) {
+        return administrador.equals(this.administrador);
     }
     
     public boolean enviarMensagem(Mensagem mensagem/*Integer idUsuario, String msgTexto, String arquivo */){

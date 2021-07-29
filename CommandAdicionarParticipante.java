@@ -2,9 +2,9 @@ public class CommandAdicionarParticipante extends Command {
     String nomeParticipante;
     Grupo grupo;
 
-    CommandAdicionarParticipante (Usuario usuario, Grupo grupo){
+    CommandAdicionarParticipante (Usuario usuario){
         super(usuario);
-        this.grupo = grupo;
+        this.grupo = null;
     }
 
     @Override

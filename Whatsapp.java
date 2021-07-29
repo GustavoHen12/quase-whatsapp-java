@@ -1,6 +1,19 @@
+import java.util.ArrayList;
+
 class Whatsapp {
        Usuario usuario;
        Grupo grupoAtual; //Se null -> esta no menu
+
+       CommandCriarGrupo criarGrupoCmd;
+       CommandAdicionarParticipante adicionarParticipanteCmd;
+
+       public void cadastrar(String nome, String telefone) {
+              CriadorUsuario criadorUsuario = new CriadorUsuario();
+              this.usuario = criadorUsuario.criaUsuario(nome, telefone);
+
+              this.criarGrupoCmd = new CommandCriarGrupo(this.usuario);
+              this.adicionarParticipanteCmd = new CommandAdicionarParticipante(this.usuario);
+       }
 
        public void NavMenu(){
               grupoAtual = null;
@@ -57,10 +70,11 @@ class Whatsapp {
 
        private CommandEnviarMensagem enviarMensagemCmd = new CommandEnviarMensagem(this.usuario);
        public void BtnEnviarMensagem(String mensagem){
-              if(grupoAtual != null){       
-                     enviarMensagemCmd.mensagem = mensagem;
-                     enviarMensagemCmd.grupo = grupoAtual;
-                     enviarMensagemCmd.executar();
+              this.grupoAtual = usuario.getGrupoPorNomeGrupo("g1");
+              if(this.grupoAtual != null){       
+                     this.enviarMensagemCmd.mensagem = mensagem;
+                     this.enviarMensagemCmd.grupo = this.grupoAtual;
+                     this.enviarMensagemCmd.executar();
               }
        }
 
@@ -75,35 +89,25 @@ class Whatsapp {
 //       }
 
 
-       private CommandCancelarEnvioMensagem cancelarEnvioCmd;
-       public void BtnCancelarEnvioMensagem(){
-              if(grupoAtual != null){
-                     cancelarEnvioCmd.executar();
-              }
-       }
+       // private CommandCancelarEnvioMensagem cancelarEnvioCmd;
+       // public void BtnCancelarEnvioMensagem(){
+       //        if(grupoAtual != null){
+       //               cancelarEnvioCmd.executar();
+       //        }
+       // }
 
-
-       CommandCriarGrupo criarGrupoCmd;
-       public void cadastrar(String nome, String telefone) {
-              CriadorUsuario criadorUsuario = new CriadorUsuario();
-              usuario = criadorUsuario.criaUsuario(nome, telefone);
-
-              criarGrupoCmd = new CommandCriarGrupo(usuario, null);
-       }
 
        public void BtnNovoGrupo(String nomeGrupo){
-              criarGrupoCmd.nomeGrupo = nomeGrupo;
-              criarGrupoCmd.executar();
+              this.criarGrupoCmd.nomeGrupo = nomeGrupo;
+              this.criarGrupoCmd.executar();
        }
 
-
-
-       CommandAdicionarParticipante adicionarParticipanteCmd;
        public void BtnAdicionarParticipante(String nomeParticipante){
-              if(grupoAtual != null){
-                     adicionarParticipanteCmd.grupo = grupoAtual;
-                     adicionarParticipanteCmd.nomeParticipante = nomeParticipante;
-                     adicionarParticipanteCmd.executar();
+              this.grupoAtual = usuario.getGrupoPorNomeGrupo("g1");
+              if(this.grupoAtual != null){
+                     this.adicionarParticipanteCmd.grupo = this.grupoAtual;
+                     this.adicionarParticipanteCmd.nomeParticipante = nomeParticipante;
+                     this.adicionarParticipanteCmd.executar();
               }
        }
 }
