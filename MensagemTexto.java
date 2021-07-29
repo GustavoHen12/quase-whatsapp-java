@@ -1,7 +1,11 @@
+import java.util.ArrayList;
 public class MensagemTexto extends Mensagem {
     String mensagem;
     
     public MensagemTexto(Usuario emissor){
+        this.visualizada = new ArrayList<Usuario>();
+        this.visualizada.add(emissor);
+        this.excluida = false;
         this.emissor = emissor;
     }
 

@@ -6,7 +6,7 @@ interface IConversa {
 
     public boolean enviarMensagem(Mensagem mensagem);
 
-    public boolean cancelarUltimaMensagem();
+    public boolean cancelarUltimaMensagem(Usuario usuario);
 
     public ArrayList getMensagens();
 }
@@ -58,18 +58,28 @@ class Grupo implements IConversa {
         return true;
     }
 
-    public boolean cancelarUltimaMensagem(/*Integer idUsuario */){
-        return true;
+    public boolean cancelarUltimaMensagem(Usuario usuario){
+        int i = this.mensagens.size() - 1;
+        while (i >= 0){
+            if (mensagens.get(i).emissor.equals(usuario)){
+                mensagens.get(i).cancela();
+                return true;
+            }
+        }
+        return false;
     }
 
-    public ArrayList getMensagens(/*Integer idUsuario*/){
-        // pegar Mensagem
-        // filtra msg por usuario
-        // add usuario lista visualizados
-        // idUsuario
+    public ArrayList getMensagens(){
         return this.mensagens;
     }
 
+    public void visualizaMensagens(Usuario usuario){
+        for (Mensagem m : this.mensagens){
+            if (!m.excluida && !m.visualizadaPor(usuario)){
+                m.visualizar(usuario);
+            }
+        }
+    }
     
     public void notificaParticipantes(Usuario usuario) {
         for(Usuario participante: this.participantes){

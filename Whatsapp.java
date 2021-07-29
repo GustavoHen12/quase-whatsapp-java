@@ -8,6 +8,7 @@ class Whatsapp {
        private CommandAdicionarParticipante adicionarParticipanteCmd;
        private CommandEnviarMensagem enviarMensagemCmd;
        private CommandEnviarArquivo enviarArquivoCmd;
+       private CommandCancelarEnvioMensagem cancelarEnvioCmd;
 
        public void cadastrar(String nome, String telefone) {
               CriadorUsuario criadorUsuario = new CriadorUsuario();
@@ -17,6 +18,7 @@ class Whatsapp {
               this.adicionarParticipanteCmd = new CommandAdicionarParticipante(this.usuario);
               this.enviarMensagemCmd = new CommandEnviarMensagem(this.usuario);
               this.enviarArquivoCmd = new CommandEnviarArquivo(this.usuario);
+              this.cancelarEnvioCmd = new CommandCancelarEnvioMensagem(this.usuario);
        }
 
        public void printMenu(){
@@ -44,10 +46,12 @@ class Whatsapp {
               ArrayList<Mensagem> mensagens;
               mensagens = grupoAtual.getMensagens();
               for (Mensagem m : mensagens){
-                     if(m.emissor.equals(this))
-                            System.out.println("\t|- Voce: " + m.getMensagem());
-                     else
-                            System.out.println("\t|- " + m.emissor.nome + ": " + m.getMensagem());
+                     if (m.visualizadaPor(this.usuario)){
+                            if(m.emissor.equals(this.usuario))
+                                   System.out.println("\t|- Voce: " + m.getMensagem());
+                            else
+                                   System.out.println("\t|- " + m.emissor.nome + ": " + m.getMensagem());
+                     }
               }
               System.out.println();
        }
@@ -68,6 +72,7 @@ class Whatsapp {
        public void NavGrupo(String nomeGrupo){
               grupoAtual = usuario.getGrupoPorNomeGrupo(nomeGrupo);
               grupoAtual.notificaParticipantes(usuario);
+              grupoAtual.visualizaMensagens(usuario);
        }
 
 
@@ -91,14 +96,12 @@ class Whatsapp {
        }
 
 
-//       private CommandCancelarEnvioMensagem cancelarEnvioCmd;
-//       public void BtnCancelarEnvioMensagem(){
-//              if(grupoAtual != null){
-//                     enviarArquivoCmd.arquivo = arquivo;
-//                     enviarArquivoCmd.grupo = grupoAtual;
-//                     enviarArquivoCmd.executar();
-//              }
-//       }
+       public void BtnCancelarEnvioMensagem(){
+              if(grupoAtual != null){
+                     cancelarEnvioCmd.grupo = grupoAtual;
+                     cancelarEnvioCmd.executar();
+              }
+       }
 
        public void BtnNovoGrupo(String nomeGrupo){
               this.criarGrupoCmd.nomeGrupo = nomeGrupo;

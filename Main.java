@@ -71,19 +71,22 @@ public class Main {
         // – p3 envia mensagem para g3;
         whatsP3.NavGrupo("g3");
         whatsP3.BtnEnviarMensagem("Essa mensagem será apagada");
+        whatsP3.imprimeTela();
         
         // – p3 envia mensagem para g2;
         whatsP3.NavGrupo("g2");
         whatsP3.BtnEnviarMensagem("Oi eu sou p3 no g2");        
         // (p2 e p1 visualizam)
         whatsP1.NavGrupo("g2");
-        whatsP3.NavGrupo("g2");
+        whatsP2.NavGrupo("g2");
         
         voltaTodosParaMenu(whatsP1, whatsP2, whatsP3, whatsP4);
 
+        
         // – p3 cancela mensagem para g3)
+        System.out.println("p3 cancela mensagem para g3");
         whatsP3.NavGrupo("g3");
-        //whatsP3.BtnCancelarEnvioMensagem();
+        whatsP3.BtnCancelarEnvioMensagem();
 
         // – p3 envia mensagem para g3;
         whatsP3.BtnEnviarMensagem("Nova mensagem de p3");
