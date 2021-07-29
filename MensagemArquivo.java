@@ -9,11 +9,18 @@ public class MensagemArquivo extends Mensagem {
         this.emissor = emissor;
     }
 
+    public void setArquivo(Arquivo arquivo){
+        this.arquivo = arquivo;
+    }
+
     public String getMensagem(){
         return arquivo.nomeArquivo;
     }
 
-    public void setArquivo(Arquivo arquivo){
-        this.arquivo = arquivo;
+        static MensagemArquivo criaMensagem(Usuario usuario, Arquivo arquivo){
+        ICriadorMensagem criadorMensagem = new CriadorMensagemArquivo();
+        Mensagem msg = criadorMensagem.createMensagem(usuario);
+        ((MensagemArquivo)msg).arquivo = arquivo;
+        return (MensagemArquivo)msg;
     }
 }

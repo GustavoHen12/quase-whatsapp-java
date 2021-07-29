@@ -20,7 +20,7 @@ public class MensagemTexto extends Mensagem {
     static MensagemTexto criaMensagem(Usuario usuario, String mensagem){
         ICriadorMensagem criadorMensagem = new CriadorMensagemTexto();
         Mensagem msg = criadorMensagem.createMensagem(usuario);
-        ((MensagemTexto)msg).setTexto(mensagem);
+        ((MensagemTexto)msg).mensagem = mensagem;
         return (MensagemTexto)msg;
     }
 
