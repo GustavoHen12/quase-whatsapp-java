@@ -13,4 +13,11 @@ public class MensagemTexto extends Mensagem {
         return this.mensagem;
     }
 
+    static MensagemTexto criaMensagem(Usuario usuario, String mensagem){
+        ICriadorMensagem criadorMensagem = new CriadorMensagemTexto();
+        Mensagem msg = criadorMensagem.createMensagem(usuario);
+        ((MensagemTexto)msg).setTexto(mensagem);
+        return (MensagemTexto)msg;
+    }
+
 }

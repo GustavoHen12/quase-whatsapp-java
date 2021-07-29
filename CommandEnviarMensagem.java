@@ -8,10 +8,7 @@ public class CommandEnviarMensagem extends Command {
 
     @Override
     boolean executar() {
-        ICriadorMensagem criadorMensagem = new CriadorMensagemTexto();
-        Mensagem msg = criadorMensagem.createMensagem(this.usuario);
-        ((MensagemTexto)msg).setTexto(this.mensagem);
-
+        Mensagem msg = MensagemTexto.criaMensagem(this.usuario, this.mensagem);
         this.grupo.enviarMensagem(msg);
         return true;
     }

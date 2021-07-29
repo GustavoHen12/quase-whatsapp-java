@@ -17,6 +17,7 @@ class Usuario implements IUsuario {
         this.nome = nome;
         this.numeroTelefone = numeroTelefone;
         this.conversas = new ArrayList<Grupo>();
+        this.notificacoes = new ArrayList<String>();
         this.idUsuario = DadosUsuarios.getProxId();
     }
 

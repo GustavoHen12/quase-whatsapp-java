@@ -67,7 +67,7 @@ class Grupo implements IConversa {
         // filtra msg por usuario
         // add usuario lista visualizados
         // idUsuario
-        return new ArrayList<Mensagem>();
+        return this.mensagens;
     }
 
     

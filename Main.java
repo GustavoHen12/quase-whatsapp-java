@@ -42,6 +42,7 @@ public class Main {
         // – p2 envia mensagem para g1;
         whatsP2.NavGrupo("g1");
         whatsP2.BtnEnviarMensagem("Oi eu sou p2");
+        whatsP2.imprimeTela();
         // (todos visualizam)
         whatsP1.NavGrupo("g1");
         whatsP3.NavGrupo("g1");
@@ -50,8 +51,9 @@ public class Main {
         voltaTodosParaMenu(whatsP1, whatsP2, whatsP3, whatsP4);
         
         // – p1 envia mensagem para g1;
-        whatsP2.NavGrupo("g1");
-        whatsP2.BtnEnviarMensagem("Oi eu sou p1");
+        whatsP1.NavGrupo("g1");
+        whatsP1.BtnEnviarMensagem("Oi eu sou p1");
+        whatsP1.imprimeTela();
         // (todos visualizam)
         whatsP2.NavGrupo("g1");
         whatsP3.NavGrupo("g1");
@@ -60,6 +62,7 @@ public class Main {
         // – p2 envia mensagem para g2;
         whatsP2.NavGrupo("g2");
         whatsP2.BtnEnviarMensagem("Oi eu sou p2 !!!");
+        whatsP2.imprimeTela();
         // (todos menos p3 visualizam)
         whatsP1.NavGrupo("g2");
 
@@ -80,7 +83,7 @@ public class Main {
 
         // – p3 cancela mensagem para g3)
         whatsP3.NavGrupo("g3");
-        whatsP3.BtnCancelarEnvioMensagem();
+        //whatsP3.BtnCancelarEnvioMensagem();
 
         // – p3 envia mensagem para g3;
         whatsP3.BtnEnviarMensagem("Nova mensagem de p3");
@@ -90,6 +93,8 @@ public class Main {
         whatsP4.NavGrupo("g3");
 
         voltaTodosParaMenu(whatsP1, whatsP2, whatsP3, whatsP4);
+        imprimeTodos(whatsP1, whatsP2, whatsP3, whatsP4);
+        
     }
 
     public static void voltaTodosParaMenu(Whatsapp whatsP1, Whatsapp whatsP2, Whatsapp whatsP3, Whatsapp whatsP4){
@@ -97,5 +102,12 @@ public class Main {
         whatsP2.NavMenu();
         whatsP3.NavMenu();
         whatsP4.NavMenu();
+    }
+
+    public static void imprimeTodos(Whatsapp whatsP1, Whatsapp whatsP2, Whatsapp whatsP3, Whatsapp whatsP4){
+        whatsP1.imprimeTela();
+        whatsP2.imprimeTela();
+        whatsP3.imprimeTela();
+        whatsP4.imprimeTela();
     }
 }

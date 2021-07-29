@@ -4,8 +4,10 @@ class Whatsapp {
        Usuario usuario;
        Grupo grupoAtual; //Se null -> esta no menu
 
-       CommandCriarGrupo criarGrupoCmd;
-       CommandAdicionarParticipante adicionarParticipanteCmd;
+       private CommandCriarGrupo criarGrupoCmd;
+       private CommandAdicionarParticipante adicionarParticipanteCmd;
+       private CommandEnviarMensagem enviarMensagemCmd;
+       private CommandEnviarArquivo enviarArquivoCmd;
 
        public void cadastrar(String nome, String telefone) {
               CriadorUsuario criadorUsuario = new CriadorUsuario();
@@ -13,11 +15,11 @@ class Whatsapp {
 
               this.criarGrupoCmd = new CommandCriarGrupo(this.usuario);
               this.adicionarParticipanteCmd = new CommandAdicionarParticipante(this.usuario);
+              this.enviarMensagemCmd = new CommandEnviarMensagem(this.usuario);
+              this.enviarArquivoCmd = new CommandEnviarArquivo(this.usuario);
        }
 
-       public void NavMenu(){
-              grupoAtual = null;
-
+       public void printMenu(){
               System.out.println("--------------------------");
               System.out.println("|          MENU          |");
               System.out.println("--------------------------");
@@ -29,12 +31,9 @@ class Whatsapp {
               System.out.println("| GRUPOS                 |");
               System.out.println(usuario.getListaGrupos());
               System.out.println();
-
        }
 
-       public void NavGrupo(String nomeGrupo){
-              grupoAtual = usuario.getGrupoPorNomeGrupo(nomeGrupo);
-
+       public void printGrupo(){
               System.out.println("--------------------------");
               System.out.println("|          GRUPO         |");
               System.out.println("--------------------------");
@@ -51,12 +50,28 @@ class Whatsapp {
                             System.out.println("\t|- " + m.emissor.nome + ": " + m.getMensagem());
               }
               System.out.println();
+       }
 
+       public void imprimeTela(){
+              if (grupoAtual == null){
+                     printMenu();
+              }
+              else{
+                     printGrupo();
+              }
+       }
+
+       public void NavMenu(){
+              grupoAtual = null;
+       }
+
+       public void NavGrupo(String nomeGrupo){
+              grupoAtual = usuario.getGrupoPorNomeGrupo(nomeGrupo);
               grupoAtual.notificaParticipantes(usuario);
        }
 
 
-       private CommandEnviarMensagem enviarMensagemCmd = new CommandEnviarMensagem(this.usuario);
+       
        public void BtnEnviarMensagem(String mensagem){
               if(this.grupoAtual != null){       
                      this.enviarMensagemCmd.mensagem = mensagem;
@@ -66,8 +81,8 @@ class Whatsapp {
        }
 
 
-       private CommandEnviarArquivo enviarArquivoCmd = new CommandEnviarArquivo(this.usuario);
-       public void BtnEnviarArquivo(TipoArquivo arquivo){
+      
+       public void BtnEnviarArquivo(Arquivo arquivo){
               if(grupoAtual != null){
                      enviarArquivoCmd.arquivo = arquivo;
                      enviarArquivoCmd.grupo = grupoAtual;
