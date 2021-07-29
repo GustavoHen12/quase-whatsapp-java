@@ -20,16 +20,21 @@ class Whatsapp {
        }
 
        public void printMenu(){
-              System.out.println("--------------------------");
+              System.out.println("|--------------------------");
               System.out.println("|          MENU          |");
-              System.out.println("--------------------------");
+              System.out.println("|-------------------------");
               System.out.println("| Usuário: " + usuario.nome);
               System.out.println("| Telefone: " + usuario.numeroTelefone);
-              System.out.println("--------------------------");
+              System.out.println("|-------------------------");
               System.out.println("| NOTIFICACOES           |");
-              System.out.println(usuario.getNotificacoes());
+              if(usuario.possuiNotificacoes()){
+                     System.out.println(usuario.getNotificacoes());
+              }
+              System.out.println("|-------------------------");
               System.out.println("| GRUPOS                 |");
               System.out.println(usuario.getListaGrupos());
+              System.out.println("|-------------------------");
+              System.out.println();
               System.out.println();
        }
 
@@ -49,6 +54,7 @@ class Whatsapp {
                      else
                             System.out.println("\t|- " + m.emissor.nome + ": " + m.getMensagem());
               }
+              System.out.println();
               System.out.println();
        }
 

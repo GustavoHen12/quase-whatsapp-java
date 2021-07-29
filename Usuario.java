@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 interface IUsuario {
     public void adicionadoConversa(Grupo conversa);
     public String getListaGrupos();
@@ -39,7 +40,10 @@ class Usuario implements IUsuario {
         String nomesGruposList = "";
         if(this.conversas != null && this.conversas.size() > 0){
             for(int i = 0; i < this.conversas.size(); i++){
-                nomesGruposList += "\t|- " + conversas.get(i).nomeGrupo + "\n";
+                if(i > 0){
+                    nomesGruposList += "\n";
+                }
+                nomesGruposList += "|\t|- " + conversas.get(i).nomeGrupo;
             }
         }
         return nomesGruposList;
@@ -59,12 +63,17 @@ class Usuario implements IUsuario {
     public void notifica (String notificacao) {
         this.notificacoes.add(notificacao);
     }
-
+    public boolean possuiNotificacoes (){
+        return this.notificacoes != null && this.notificacoes.size() > 0;
+    }
     public String getNotificacoes () {
         String notificacoes = "";
         if(this.notificacoes != null && this.notificacoes.size() > 0){
             for(int i = 0; i < this.notificacoes.size(); i++){
-                notificacoes += "\t|- " + this.notificacoes.get(i) + "\n";
+                if(i > 0){
+                    notificacoes += "\n";
+                }
+                notificacoes += "|\t|- " + this.notificacoes.get(i);
                 this.notificacoes.remove(i);
             }
         }
