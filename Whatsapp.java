@@ -67,7 +67,7 @@ class Whatsapp {
 
 
        private CommandEnviarArquivo enviarArquivoCmd = new CommandEnviarArquivo(this.usuario);
-       public void BtnEnviarArquivo(Arquivo arquivo){
+       public void BtnEnviarArquivo(TipoArquivo arquivo){
               if(grupoAtual != null){
                      enviarArquivoCmd.arquivo = arquivo;
                      enviarArquivoCmd.grupo = grupoAtual;
@@ -76,13 +76,14 @@ class Whatsapp {
        }
 
 
-//       private CommandCancelarEnvioMensagem cancelarEnvioCmd = new CommandCancelarEnvioMensagem(this.usuario);
+//       private CommandCancelarEnvioMensagem cancelarEnvioCmd;
 //       public void BtnCancelarEnvioMensagem(){
 //              if(grupoAtual != null){
-//                     cancelarEnvioCmd.executar();
+//                     enviarArquivoCmd.arquivo = arquivo;
+//                     enviarArquivoCmd.grupo = grupoAtual;
+//                     enviarArquivoCmd.executar();
 //              }
 //       }
-
 
        public void BtnNovoGrupo(String nomeGrupo){
               this.criarGrupoCmd.nomeGrupo = nomeGrupo;
