@@ -24,53 +24,40 @@ class Whatsapp {
               System.out.println("| Usuário: " + usuario.nome);
               System.out.println("| Telefone: " + usuario.numeroTelefone);
               System.out.println("--------------------------");
+              System.out.println("| NOTIFICACOES           |");
+              System.out.println(usuario.getNotificacoes());
               System.out.println("| GRUPOS                 |");
-
-              ArrayList<Grupo> grupos;
-              grupos = usuario.getListaGrupos();
-              for (Grupo g : grupos){
-                     System.out.println("\t|- " + g.getNomeGrupo());
-              }
+              System.out.println(usuario.getListaGrupos());
               System.out.println();
 
        }
 
        public void NavGrupo(String nomeGrupo){
-              grupoAtual = null;
-              if(usuario.conversas != null && usuario.conversas.size() > 0){
-                     for(int i = 0; i < usuario.conversas.size(); i++){
-                            if(usuario.conversas.get(i).nomeGrupo.equals(nomeGrupo)){
-                                   grupoAtual = usuario.conversas.get(i);
-                            }
-                     }
-              }
-              if(grupoAtual == null){
-                     System.out.println("GRUPO NAO ENCONTRADO, RETORNANDO PARA O MENU ...");
-                     NavMenu();
-              }
+              grupoAtual = usuario.getGrupoPorNomeGrupo(nomeGrupo);
 
               System.out.println("--------------------------");
-              System.out.println("Usuário: " + usuario.nome);
-              System.out.println("Telefone: " + usuario.numeroTelefone);
+              System.out.println("|          GRUPO         |");
               System.out.println("--------------------------");
-
+              System.out.println("| Usuário: " + usuario.nome);
+              System.out.println("| Telefone: " + usuario.numeroTelefone);
+              System.out.println("--------------------------");
               System.out.println("[" + grupoAtual.getNomeGrupo() + "]");
               ArrayList<Mensagem> mensagens;
-              mensagens = grupoAtual.getConversa();
+              mensagens = grupoAtual.getMensagens();
               for (Mensagem m : mensagens){
-                     if(m.origem.equals(this))
+                     if(m.emissor.equals(this))
                             System.out.println("\t|- Voce: " + m.getTexto());
                      else
-                            System.out.println("\t|- " + m.origem.nome + ": " + m.getTexto());
+                            System.out.println("\t|- " + m.emissor.nome + ": " + m.getTexto());
               }
               System.out.println();
 
+              //chamar metodo para notificacao
        }
 
 
        private CommandEnviarMensagem enviarMensagemCmd = new CommandEnviarMensagem(this.usuario);
        public void BtnEnviarMensagem(String mensagem){
-              this.grupoAtual = usuario.getGrupoPorNomeGrupo("g1");
               if(this.grupoAtual != null){       
                      this.enviarMensagemCmd.mensagem = mensagem;
                      this.enviarMensagemCmd.grupo = this.grupoAtual;
@@ -79,22 +66,22 @@ class Whatsapp {
        }
 
 
-       private CommandEnviarArquivo enviarArquivoCmd;
-//       public void BtnEnviarArquivo(TipoArquivo arquivo){
-//              if(grupoAtual != null){
-//                     enviarArquivoCmd.arquivo = arquivo;
-//                     enviarArquivoCmd.grupo = grupoAtual;
-//                     enviarArquivoCmd.executar();
-//              }
-//       }
+       private CommandEnviarArquivo enviarArquivoCmd = new CommandEnviarArquivo(this.usuario);
+       public void BtnEnviarArquivo(TipoArquivo arquivo){
+              if(grupoAtual != null){
+                     enviarArquivoCmd.arquivo = arquivo;
+                     enviarArquivoCmd.grupo = grupoAtual;
+                     enviarArquivoCmd.executar();
+              }
+       }
 
 
-       // private CommandCancelarEnvioMensagem cancelarEnvioCmd;
-       // public void BtnCancelarEnvioMensagem(){
-       //        if(grupoAtual != null){
-       //               cancelarEnvioCmd.executar();
-       //        }
-       // }
+       private CommandCancelarEnvioMensagem cancelarEnvioCmd = new CommandCancelarEnvioMensagem(this.usuario);
+       public void BtnCancelarEnvioMensagem(){
+              if(grupoAtual != null){
+                     cancelarEnvioCmd.executar();
+              }
+       }
 
 
        public void BtnNovoGrupo(String nomeGrupo){
@@ -103,7 +90,6 @@ class Whatsapp {
        }
 
        public void BtnAdicionarParticipante(String nomeParticipante){
-              this.grupoAtual = usuario.getGrupoPorNomeGrupo("g1");
               if(this.grupoAtual != null){
                      this.adicionarParticipanteCmd.grupo = this.grupoAtual;
                      this.adicionarParticipanteCmd.nomeParticipante = nomeParticipante;

@@ -11,6 +11,7 @@ class Usuario implements IUsuario {
     public Arquivo foto;
     public String status;
     public ArrayList<Grupo> conversas; // mudar
+    public ArrayList<String> notificacoes;
 
     public Usuario (String nome, String numeroTelefone){
         this.nome = nome;
@@ -37,7 +38,7 @@ class Usuario implements IUsuario {
         String nomesGruposList = "";
         if(this.conversas != null && this.conversas.size() > 0){
             for(int i = 0; i < this.conversas.size(); i++){
-                nomesGruposList += conversas.get(i).nomeGrupo + " ";
+                nomesGruposList += "\t|- " + conversas.get(i).nomeGrupo + "\n";
             }
         }
         return nomesGruposList;
@@ -52,5 +53,20 @@ class Usuario implements IUsuario {
             }
         }
         return null;
+    }
+
+    public void notifica (String notificacao) {
+        this.notificacoes.add(notificacao);
+    }
+
+    public String getNotificacoes () {
+        String notificacoes = "";
+        if(this.notificacoes != null && this.notificacoes.size() > 0){
+            for(int i = 0; i < this.notificacoes.size(); i++){
+                notificacoes += "\t|- " + this.notificacoes.get(i) + "\n";
+                this.notificacoes.remove(i);
+            }
+        }
+        return notificacoes;
     }
 }

@@ -70,10 +70,10 @@ class Grupo implements IConversa {
         return new ArrayList<Mensagem>();
     }
 
-    //
-    // public void notificaParticipantes() {
-    //     for(Usuario participante: this.participantes){
-    //         participante.aplicativo.notifica("Nova Mensagem");
-    //     }
-    // }
+    
+    //public void notificaParticipantes() {
+    //    for(Usuario participante: this.participantes){
+    //        participante.aplicativo.notifica("Nova Mensagem");
+    //    }
+    //}
 }
