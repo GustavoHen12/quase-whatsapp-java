@@ -9,7 +9,7 @@ public class CommandAdicionarParticipante extends Command {
 
     @Override
     boolean executar() {
-    //    Grupo.adicionarParticipante(this.usuario, nomeParticipante);
+        grupo.adicionarParticipante(this.usuario, nomeParticipante);
         return true;
     }
 }

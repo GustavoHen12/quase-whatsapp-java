@@ -52,7 +52,7 @@ class Whatsapp {
               }
               System.out.println();
 
-              //chamar metodo para notificacao
+              grupoAtual.notificaParticipantes(usuario);
        }
 
 
