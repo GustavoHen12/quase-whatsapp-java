@@ -48,7 +48,7 @@ public class Main {
         acoes.add("p2 envia mensagem para g1");
         acoes.add("todos visualizam");
         whatsP2.NavGrupo("g1");
-        whatsP2.BtnEnviarMensagem("Oi eu sou p2");
+        whatsP2.BtnEnviarArquivo(new Arquivo("video", "o_mundo_acaba_amanha.mp4"));
 
 
         whatsP1.NavGrupo("g1");
@@ -88,7 +88,7 @@ public class Main {
         whatsP1.NavGrupo("g2");
 
         imprimeHeaderSecao(acoes);
-        imprimeTodos(whatsP1, whatsP2, whatsP3, whatsP4);
+        imprimeTodos(whatsP1, whatsP2, null, null);
 
         voltaTodosParaMenu(whatsP1, whatsP2, whatsP3, whatsP4);
 
@@ -98,11 +98,12 @@ public class Main {
         acoes.add("p3 envia mensagem para g3");
         whatsP3.NavGrupo("g3");
         whatsP3.BtnEnviarMensagem("Essa mensagem será apagada");
-        whatsP3.imprimeTela();
-        
+        whatsP3.NavMenu();
+
         acoes.add("p3 envia mensagem para g2");
         whatsP3.NavGrupo("g2");
-        whatsP3.BtnEnviarMensagem("Oi eu sou p3 no g2");        
+        whatsP3.BtnEnviarMensagem("Oi eu sou p3 no g2");
+
         acoes.add("p2 e p1 visualizam");
         whatsP1.NavGrupo("g2");
         whatsP2.NavGrupo("g2");
@@ -126,7 +127,11 @@ public class Main {
         whatsP3.NavGrupo("g3");
         whatsP4.NavGrupo("g3");
 
+        imprimeHeaderSecao(acoes);
+        imprimeTodos(whatsP1, whatsP2, whatsP3, whatsP4);
+
         voltaTodosParaMenu(whatsP1, whatsP2, whatsP3, whatsP4);
+
         imprimeTodos(whatsP1, whatsP2, whatsP3, whatsP4);
         
     }
@@ -139,10 +144,18 @@ public class Main {
     }
 
     private static void imprimeTodos(Whatsapp whatsP1, Whatsapp whatsP2, Whatsapp whatsP3, Whatsapp whatsP4){
-        whatsP1.imprimeTela();
-        whatsP2.imprimeTela();
-        whatsP3.imprimeTela();
-        whatsP4.imprimeTela();
+        if(whatsP1 != null){
+            whatsP1.imprimeTela();
+        }
+        if(whatsP2 != null){
+            whatsP2.imprimeTela();
+        }
+        if(whatsP3 != null){
+            whatsP3.imprimeTela();
+        }
+        if(whatsP4 != null){
+            whatsP4.imprimeTela();
+        }
     }
 
     private static void imprimeHeaderSecao(ArrayList<String> acoes){

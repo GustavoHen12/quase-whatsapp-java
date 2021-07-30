@@ -22,7 +22,7 @@ class Whatsapp {
        }
 
        public void printMenu(){
-              System.out.println("|--------------------------");
+              System.out.println("|-------------------------");
               System.out.println("|          MENU          |");
               System.out.println("|-------------------------");
               System.out.println("| Usuário: " + usuario.nome);
@@ -41,23 +41,24 @@ class Whatsapp {
        }
 
        public void printGrupo(){
-              System.out.println("--------------------------");
+              System.out.println("|-------------------------");
               System.out.println("|          GRUPO         |");
-              System.out.println("--------------------------");
+              System.out.println("|-------------------------");
               System.out.println("| Usuário: " + usuario.nome);
               System.out.println("| Telefone: " + usuario.numeroTelefone);
-              System.out.println("--------------------------");
-              System.out.println("[" + grupoAtual.nomeGrupo + "]");
+              System.out.println("|-------------------------");
+              System.out.println("| [" + grupoAtual.nomeGrupo + "]");
               ArrayList<Mensagem> mensagens;
               mensagens = grupoAtual.getMensagens();
               for (Mensagem m : mensagens){
                      if (m.visualizadaPor(this.usuario)){
                             if(m.emissor.equals(this.usuario))
-                                   System.out.println("\t|- Voce: " + m.getMensagem());
+                                   System.out.println("|\t|- Voce: " + m.getMensagem());
                             else
-                                   System.out.println("\t|- " + m.emissor.nome + ": " + m.getMensagem());
+                                   System.out.println("|\t|- " + m.emissor.nome + ": " + m.getMensagem());
                      }
               }
+              System.out.println("|-------------------------");
               System.out.println();
               System.out.println();
        }
@@ -77,7 +78,6 @@ class Whatsapp {
 
        public void NavGrupo(String nomeGrupo){
               grupoAtual = usuario.getGrupoPorNomeGrupo(nomeGrupo);
-              grupoAtual.notificaParticipantes(usuario);
               grupoAtual.visualizaMensagens(usuario);
        }
 

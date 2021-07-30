@@ -69,7 +69,7 @@ class Grupo implements IConversa {
         return false;
     }
 
-    public ArrayList getMensagens(){
+    public ArrayList<Mensagem> getMensagens(){
         return this.mensagens;
     }
 
@@ -77,14 +77,16 @@ class Grupo implements IConversa {
         for (Mensagem m : this.mensagens){
             if (!m.excluida && !m.visualizadaPor(usuario)){
                 m.visualizar(usuario);
+                notificaParticipantes(usuario, m.emissor);
             }
         }
     }
     
-    public void notificaParticipantes(Usuario usuario) {
+    public void notificaParticipantes(Usuario usuario, Usuario emissor) {
         for(Usuario participante: this.participantes){
-            if(participante != usuario)
-                participante.notifica(this.nomeGrupo + ": " + usuario.nome + " vizualizou mensagem.|");
+            if(!participante.idUsuario.equals(usuario.idUsuario)){
+                participante.notifica(this.nomeGrupo + ": " + usuario.nome + " vizualizou a mensagem enviada por "+ emissor.nome +".|");
+            }
         }
     }
 }

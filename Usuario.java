@@ -69,12 +69,9 @@ class Usuario implements IUsuario {
     public String getNotificacoes () {
         String notificacoes = "";
         if(this.notificacoes != null && this.notificacoes.size() > 0){
-            for(int i = 0; i < this.notificacoes.size(); i++){
-                if(i > 0){
-                    notificacoes += "\n";
-                }
-                notificacoes += "|\t|- " + this.notificacoes.get(i);
-                this.notificacoes.remove(i);
+            while(this.notificacoes.size() > 0){
+                notificacoes += "|\t|- " + this.notificacoes.get(0) + "\n";;
+                this.notificacoes.remove(0);
             }
         }
         return notificacoes;
